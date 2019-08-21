@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Scoresheet from './Components/Scoresheet/Scoresheet';
+import Header from './Components/Header/Header';
+import StartScreen from './Components/StartScreen/StartScreen';
 
 function App() {
+
+  const [isGameStarted, setIsGameStarted] = useState(false)
+  const [numberOfPlayers, setNumberOfPlayers] = useState(0);
+
+  const setPlayers = (event) => {
+    const players = parseInt(event.target.value);
+    setNumberOfPlayers(players);
+  }
+
+  const startGame = (event) => {
+    event.preventDefault();
+    setIsGameStarted(true);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-content">
+
+      <Header />
+      {!isGameStarted ? (
+        <StartScreen setPlayers={setPlayers} startGame={startGame} />
+      ):(
+        <Scoresheet numberOfPlayers={numberOfPlayers} />
+      )}
+
+      </div>
     </div>
   );
 }

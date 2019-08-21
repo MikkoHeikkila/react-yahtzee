@@ -1,0 +1,24 @@
+#scoresheet{
+    display: flex;
+}
+#scoresheet div{
+    flex: 1;
+}
+
+.row{
+    display: flex;
+    height: 45px;
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerInput{
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
